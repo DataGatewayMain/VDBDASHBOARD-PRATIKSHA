@@ -1,0 +1,141 @@
+<header class="header">
+    <h2 class="borderbottom">Build Your Feature</h2>
+    <br>
+    <h6>Elevate Your App with Every New Feature</h6>
+</header>
+
+<main class="features-list m-5">
+
+      <div class="button-container">
+        <button (click)="showDiv(1)" [ngClass]="{'active': currentDiv === 1}">Manage Feature</button>
+        <button (click)="showDiv(2)" [ngClass]="{'active': currentDiv === 2}">Recent Feature</button>
+        <!-- <button (click)="showDiv(3)" [ngClass]="{'active': currentDiv === 3}"></button> -->
+      </div>
+
+        <!-- first div -->
+      <div *ngIf="currentDiv === 1" class="feature-card">
+
+      <div class="row">
+      <div class="col-md-12 d-flex justify-content-end">
+             <!-- All Users Toggle Button -->
+            <div class="toggle-setting py-3 ">
+               <label class="toggle-label mx-3 text-danger">Send Notifications To Single User</label>
+               <div 
+                  class="toggle-button" 
+                  [ngClass]="{ 'active-red': isAllUsersActive, 'inactive-blue': !isAllUsersActive }" 
+                  (click)="toggleAllUsers()">
+               </div>
+            </div>
+      </div>
+      </div>
+
+        <!-- form for all user -->
+        <div *ngIf="showForm1 "  class="p-5">
+          <h4 class="my-3 text-muted">Send New Feature From Here</h4>
+          <!-- Form 1 -->
+          <form class="form" [formGroup]="featureForm" (ngSubmit)="notifyFeature()">
+             <input type="text" placeholder="Title" class="email" id="message"  formControlName="message"/>
+             <div *ngIf="featureForm.get('message')?.invalid && featureForm.get('message')?.touched" style="color:red; margin-bottom: 5px;">
+                Message is required.
+             </div>
+             <input type="text" placeholder="Description" class="pass" id="featureDescription" formControlName="featureDescription"  />
+             <div *ngIf="featureForm.get('featureDescription')?.invalid && featureForm.get('featureDescription')?.touched"  style="color:red; margin-bottom: 5px;">
+                Feature Description is required.
+             </div>
+             <button type="submit" class="login_btn" [disabled]="featureForm.invalid">Send</button>
+          </form>
+        </div>
+
+             <!-- Form for single user notification -->
+        <div *ngIf="showForm2">
+          <h6 class="my-3">Select One User</h6>
+
+         <div class="table-responsive">
+          <table class="table table-bordered task-table mb-3">
+            <thead>
+              <tr>
+                <th>select </th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <!-- <th>Company Name</th> -->
+                <th>Credit</th>
+                <th>Last Login</th>
+                <th>Location</th>
+                <th>Status</th>
+              
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of users table-responsive" (click)="selectSingleUser(user.email)">
+                <td><input type="checkbox" [checked]="user.email === selectedEmail" (change)="selectSingleUser(user)" /></td>
+                <td>{{ user.id }}</td>
+                <td>{{ user.firstName }} {{ user.lastName }}</td>
+                <td>{{ user.email }}</td>
+                <!-- <td>{{ user.companyName }}</td> -->
+                <td>{{ user.credit }}</td>
+                <td>{{ user.lastLogin | date:'short' }}</td>
+                <td>{{ user.city }}, {{ user.state }}</td>
+                <td>
+                  <span [ngClass]="{'green-dot': user.status === 'Active', 'red-dot': user.status === 'Inactive'}"></span>
+                  {{user.status}}
+                </td>
+             
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+       
+         <form class="form my-5" [formGroup]="featureForm1" (ngSubmit)="notifyFeaturesingle()">
+          <h6 class="my-3">Add Feature Here</h6>
+          <input type="email" placeholder="User Email" class="email" id="email" formControlName="email" #emailInput />
+           <div *ngIf="featureForm1.get('email')?.invalid && featureForm1.get('email')?.touched" style="color:red; margin-bottom: 5px;">
+             Valid email is required.
+           </div>
+           <input type="text" placeholder="Title" class="email" id="message" formControlName="message" />
+           <div *ngIf="featureForm1.get('message')?.invalid && featureForm1.get('message')?.touched" style="color:red; margin-bottom: 5px;">
+             Message is required.
+           </div>
+           <input type="text" placeholder="Description" class="pass" id="featureDescription" formControlName="featureDescription" />
+           <div *ngIf="featureForm1.get('featureDescription')?.invalid && featureForm1.get('featureDescription')?.touched" style="color:red; margin-bottom: 5px;">
+             Feature Description is required.
+           </div>
+           <button type="submit" class="login_btn" [disabled]="featureForm1.invalid">Send</button>
+         </form>
+
+      
+        </div>
+      </div>
+     
+        <!-- second div -->
+      <div *ngIf="currentDiv === 2" class="feature-card ">   
+      <div class="table-responsive">
+        <table class="table table-bordered task-table mb-3">
+          <thead>
+            <tr>  
+              <th>Title</th>
+              <th>Description</th>
+              <th>Created At</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="notifications.length > 0; else noNotifications">
+            <tr *ngFor="let notification of notifications">
+             
+              <td>{{ notification.message }}</td>
+              <td>{{ notification.description }}</td>
+              <td>{{ notification.createdAt | date: 'short' }}</td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <ng-template #noNotifications>
+          <p>No notifications available.</p>
+        </ng-template>
+      </div> 
+      </div>
+     
+</main>
+
+
+

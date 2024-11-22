@@ -1,0 +1,63 @@
+<!-- <div class="chatbox">
+   
+    <div class="chat-history">
+      <div *ngFor="let message of chatHistory" class="message">
+     
+        <p>{{ message.content }}</p>
+      </div>
+    </div>
+  
+   
+    <div class="message-input">
+      <input [(ngModel)]="newMessage" placeholder="Type your message here" />
+      <button (click)="sendMessage()">Send</button>
+    </div>
+</div> -->
+
+
+<!-- <div class="chatbox">
+  <div class="messages">
+    <div *ngFor="let msg of messages" [class.admin]="msg.sender === 'admin'">
+      <strong>{{ msg.sender }}:</strong> {{ msg.message }}
+    </div>
+  </div>
+  <input [(ngModel)]="newMessage" placeholder="Type a message..." />
+  <button (click)="sendMessage()">Send</button>
+</div> -->
+
+
+<div class="chatbox-container">
+  <div class="chatbox-header">
+    <span>Chat with {{ firstName }}</span>
+    <button mat-icon-button (click)="closeChat()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class="chatbox-messages">
+    <div
+      *ngFor="let msg of messages"
+      class="message"
+      [ngClass]="{
+        'user-message': msg.sender === 'user',
+        'admin-message': msg.sender === 'admin'
+      }"
+    >
+      <p>{{ msg.message }}</p>
+      <span class="timestamp">{{ msg.timestamp | date: 'shortTime' }}</span>
+    </div>
+  </div>
+  
+  <div class="chatbox-input">
+    <input
+      [(ngModel)]="newMessage"
+      type="text"
+      placeholder="Type a message..."
+    />
+    <button (click)="sendMessage()">Send</button>
+  </div>
+</div>
+
+
+
+
+  

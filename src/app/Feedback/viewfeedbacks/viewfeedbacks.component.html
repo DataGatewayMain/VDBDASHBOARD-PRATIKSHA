@@ -1,0 +1,36 @@
+<header class="header">
+    <h2 class="borderbottom">Feedbacks</h2>
+    <br>
+    <h6>Help Us Improve our Experience!</h6>
+</header>
+
+<div class="feedback-container table-responsive p-5 ">
+   
+    <table *ngIf="feedbackList.length > 0; else noData" class="table table-bordered task-table mb-3">
+      <thead>
+        <tr class="text-center">
+          
+          <th>First Name</th>
+          <th>Email</th>
+          <th>Responce</th>
+          <th>Message</th>
+          <th>Created At</th>
+          <!-- <th>API Key</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let feedback of feedbackList" class="text-center">
+          <td>{{ feedback.firstName }}</td>
+          <td>{{ feedback.email }}</td>
+          <td>{{ feedback.feedbackType }}</td>
+          <td>{{ feedback.additionalFeedback }}</td>
+          <td>{{ feedback.createdAt }}</td>
+          <!-- <td>{{ feedback.apiKey }}</td> -->
+        </tr>
+      </tbody>
+    </table>
+    <ng-template #noData>
+      <p>No feedback data available.</p>
+    </ng-template>
+  </div>
+  

@@ -1,0 +1,17 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/app",
+    "types": [],
+    "strict": true, // Ensure this is enabled for strict type checking
+    "noImplicitAny": false, // Optional: you can disable this to allow implicit 'any' types
+
+  },
+  "files": [
+    "src/main.ts"
+  ],
+  "include": [
+    "src/**/*.d.ts"
+  ]
+}

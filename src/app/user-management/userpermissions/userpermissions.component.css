@@ -1,0 +1,171 @@
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+  }
+
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  .slider.round {
+    border-radius: 34px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+
+
+
+
+.switcher {
+
+
+
+  display: inline-block;
+  font: normal 13px Verdana;
+
+
+
+
+  .switch {
+   
+
+    position: relative;
+    display: inline-block;
+    width: 28px;
+    height: 14px;
+    overflow: hidden;
+  }
+
+
+ 
+
+  input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
+
+  
+
+  label {
+    font-size: 0;
+    cursor: pointer;
+
+    .label {
+      position: relative;
+      top: -2px;
+      font-size: 13px;
+    }
+
+    .switch + .label {
+      padding-left: 5px;
+    }
+
+    .label:not(:last-child) {
+      padding-right: 5px;
+    }
+  }
+
+
+
+  a {
+   
+
+    position: relative;
+    left: -14px;
+    display: block;
+    width: 42px;
+    height: 14px;
+    background-color: #b1b4b0;
+
+    i {
+  
+      position: absolute;
+      top: 1px;
+      left: 15px;
+      z-index: 3;
+      display: block;
+      width: 12px;
+      height: 12px;
+      font-style: normal;
+      background-color: #fff;
+    }
+  }
+
+  input:checked + label .switch a {
+    left: 0;
+    background-color: #809ead;
+  }
+
+  input[type="radio"]:checked + label {
+    cursor: default;
+  }
+
+  input:disabled + label {
+    cursor: default;
+
+    .switch {
+      background-color: #ececeb;
+
+      a {
+        display: none;
+      }
+    }
+  }
+}
+
+
+
+.chk-block .switcher {
+  display: block;
+
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  label .label + .switch {
+    float: right;
+  }
+}

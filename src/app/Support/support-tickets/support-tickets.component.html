@@ -1,0 +1,53 @@
+<!-- src/app/ticket-list/ticket-list.component.html -->
+<header class="header">
+  <h2 class="borderbottom">Support Tickets</h2>
+  <br>
+  <h6>Help Us Improve our Experience!</h6>
+</header>
+
+
+
+<div class="container  py-5">
+  <div class="search-box">
+    <input type="text" placeholder="Search Ticket ID here....." [(ngModel)]="searchTerm"
+    (input)="applySearch()">
+  </div>
+  
+
+  <div class="table-responsive ">
+    <table class="table table-bordered task-table mb-3">
+      <thead>
+        <tr>
+          <th>Ticket ID</th>
+          <th>User ID</th>
+          <th>Name</th>
+          <th>Title</th>
+          <!-- <th>Description</th> -->
+          <th>Created At</th>
+          <!-- <th>Status</th>
+          <th>Response</th>
+          <th>Updated At</th> -->
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody >
+        <tr *ngFor="let ticket of displayedTickets" >
+          <td>{{ ticket.ticketId }}</td>
+          <td>{{ ticket.userId }}</td>
+          <td>{{ ticket.firstName}}</td>
+          <td>{{ ticket.title }}</td>
+          <!-- <td>{{ ticket.description }}</td> -->
+          <td>{{ ticket.createdAt | date: 'short' }}</td>
+          <!-- <td>{{ ticket.status }}</td>
+          <td>{{ ticket.response }}</td>
+          <td>{{ ticket.updatedAt | date: 'short' }}</td> -->
+          <td class="d-flex align-items-center justify-content-center">Open<a (click)="openTicketDialog(ticket)"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="#f93301"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-ticket"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 5l0 2" /><path d="M15 11l0 2" /><path d="M15 17l0 2" /><path d="M5 5h14a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-3a2 2 0 0 0 0 -4v-3a2 2 0 0 1 2 -2" /></svg>
+            </a></td>
+            
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+ 

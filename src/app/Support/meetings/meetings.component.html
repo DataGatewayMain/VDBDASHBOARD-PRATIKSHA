@@ -1,0 +1,51 @@
+<header class="header">
+    <h2 class="borderbottom">Meetings</h2>
+    <br>
+    <h6>Track and Manage Support Tickets in Real-Time</h6>
+</header>
+
+<div class="container  py-5">
+  <div class="search-box">
+    <input type="text" placeholder="Search Ticket ID here....." [(ngModel)]="searchTerm"
+    (input)="applySearch()">
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-md-12">
+      <div class="table-responsive mb-3">
+        <table *ngIf="!isLoading && tickets.length > 0" class="table table-bordered">
+          <thead>
+            <tr class="text-center">
+              <th>ID</th>
+              <th>Ticket ID</th>
+              <th>Start Time</th>
+              <th>Duration</th>
+              <th>Ticket Status</th>
+              <th>Ticket Title</th>
+              <th>Participant</th>
+              <th>Meeting Link</th>
+              <th>Update Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let ticket of displayedTickets" class="text-center">
+              <td>{{ ticket.id }}</td>
+              <td>{{ ticket.ticketId }}</td>
+              <td>{{ ticket.startTime | date: 'short' }}</td>
+              <td>{{ ticket.duration }}</td>
+              <td>{{ ticket.ticketStatus }}</td>
+              <td>{{ ticket.ticketTitle }}</td>
+              <td>{{ ticket.participantFirstName }} ({{ ticket.participantEmail }})</td>
+              <td>
+                <button (click)="joinMeeting(ticket.meetingLink)" class="btnjoin d-flex justify-content-between align-items-center">
+                  Join <svg  xmlns="http://www.w3.org/2000/svg"  width="20"  height="20"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-link"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+                </button>
+              </td>
+              <td><a class="btn" (click)="openTicketDialog(ticket)"><abbr title="Send Responce"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-send-2"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4.698 4.034l16.302 7.966l-16.302 7.966a.503 .503 0 0 1 -.546 -.124a.555 .555 0 0 1 -.12 -.568l2.468 -7.274l-2.468 -7.274a.555 .555 0 0 1 .12 -.568a.503 .503 0 0 1 .546 -.124z" /><path d="M6.5 12h14.5" /></svg></abbr></a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

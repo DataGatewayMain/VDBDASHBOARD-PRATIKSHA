@@ -1,0 +1,93 @@
+<div class="container center">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card border-0 shadow-sm rounded-lg">
+                <div class="card-body p-5">
+                 <div class="row">
+                    <div class="col-md-6">
+                        <div class="text-center mb-4">
+                            <h1 class="display-5"> 
+                                <h2 class="text-muted"><i class="fa-solid fa-user"></i> {{ data.firstName }} {{ data.lastName }}</h2>
+                            </h1>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="text-center mb-4">
+                            <h1 class="display-5"> 
+                                <h5 class="text-muted"><span><i class="fa-solid fa-circle-check" [ngClass]="{'text-success': data.status === 'Active', 'text-danger': data.status !== 'Active'}"></i></span>{{ data.status }}</h5>
+                            </h1>
+                          
+                        </div>
+                    </div>
+                 </div>
+
+                    <div class="row p-5">
+                    <div class="col-md-6 first">
+                            <div *ngIf="data">
+                                <!-- <div class="mb-4">
+                                    <h5><i class="fa-solid fa-user"></i> Name</h5>
+                                    <p class="text-muted">{{ data.firstName }} {{ data.lastName }}</p>
+                                </div> -->
+        
+                                <div class="mb-4">
+                                    <h5><i class="fa-solid fa-envelope"></i> Email</h5>
+                                    <p class="text-muted">{{ data.email }}</p>
+                                </div>
+        
+                                <div class="mb-4">
+                                    <h5><i class="fa-solid fa-building"></i> Company Name</h5>
+                                    <p class="text-muted">{{ data.companyName }}</p>
+                                </div>
+
+                                <div class="mb-4">
+                                    <h5><i class="fa-solid fa-credit-card"></i>Credit</h5>
+                                    <p class="text-muted">{{data.credit}}</p>
+                                </div>
+                            </div>
+                    </div>
+                
+                   <div class="col-md-6">
+                        <div *ngIf="data1" class="mx-4">
+
+                            <div class="mb-4">
+                                <h5><i class="fa-solid fa-right-to-bracket"></i>Last Login</h5>
+                                <p class="text-muted">{{ data.lastLogin | date:'short' }}</p>
+                            </div> 
+
+                            <div class="mb-4">
+                                <h1>
+                                    <h5><i class="fa-solid fa-location-dot" ></i>Location</h5>
+                                    <p class="text-muted">{{data.city}},{{data.state}}</p>
+                                </h1>
+                            </div>
+
+                            <div class="mb-4">
+                                <h5><i class="fa-solid fa-save"></i> Saved Data Count</h5>
+                                <p class="text-muted">{{ data1.count }}</p>
+                            </div>
+
+                            <div class="mb-4">
+                                <h5><i class="fa-solid fa-database"></i> Total Exported Data</h5>
+                                <p class="text-muted">{{ data.exporteddatacount }}</p>
+                            </div>
+
+                        </div>
+                   </div>
+
+                </div>
+
+                <div class="d-flex justify-content-end align-items-end">
+                    <button class="button-7" role="button">Edit</button>
+                    <button class="button-8 mx-2" role="button">Delete</button>
+                </div>
+
+                    <div *ngIf="!data">
+                        <p class="text-muted text-center">Loading data...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+
+ <!-- <div class="container main">
+    <div class="row"> -->
+      <!-- <h2>Import Your CSV Data</h2>
+      <p>Quickly upload your CSV file to add, update, or manage data directly in the VectorDB system.</p>
+      <div class="col-md-12">
+        <div class="fileuplodation">
+        <div class="file-upload-container d-flex justify-content-center align-items-center flex-column">
+         <h4>Select File here</h4> 
+          <p class="fs-10 text-muted">File Supported: Csv</p> -->
+        
+          <!-- File input -->
+          <!-- <input type="file" (change)="onFileSelected($event)" class="btn iput" /> -->
+          
+          <!-- Upload button -->
+          <!-- <button [disabled]="!selectedFile || isLoading" (click)="onUpload()">
+            {{ isLoading ? 'Uploading...' : 'Upload' }}
+          </button> -->
+        
+          <!-- Error message -->
+          <!-- <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div> -->
+        
+          <!-- Response display -->
+          <!-- <div *ngIf="uploadResponse" class="response-container">
+            <h3>Upload Response</h3>
+            <pre>{{ uploadResponse | json }}</pre>
+          </div> -->
+        <!-- </div>
+      </div>
+      </div>
+    </div>
+  </div> -->
+
+  <form (submit)="uploadFile($event)">
+    <label for="file">Select ZIP file containing CSV files:</label>
+    <input type="file" (change)="uploadFile($event)" accept=".csv" />
+    <button type="submit">Upload File</button>
+  </form>
+  
+  
+  
+
+
+
+
+

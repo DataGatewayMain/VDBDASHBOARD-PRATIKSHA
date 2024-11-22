@@ -1,0 +1,55 @@
+.header {
+    text-align: center;
+    padding: 20px;
+    background-color:white;
+    box-shadow: #ddd inset;
+    color: black;
+}
+
+td{
+    text-align: center;
+}
+th{
+    text-align: center;
+}
+
+.search-box {
+    margin-bottom: 15px;
+}
+
+.search-box input {
+    padding: 8px;
+    width: 100%;
+    max-width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 768px) {
+    table {
+      font-size: 12px; /* Reduce font size for small screens */
+    }
+  
+    .search-box input {
+      width: 100%;
+      margin-bottom: 10px; /* Adjust input for small screens */
+    }
+  
+    .search-box button {
+      width: 100%;
+    }
+  }
+  
+  @media screen and (max-width: 576px) {
+    table {
+      font-size: 10px; /* Further reduce font size for extra small screens */
+    }
+  
+    th, td {
+      padding: 6px 8px; /* Reduce padding for small screens */
+    }
+  
+    .action-icons fa-icon {
+      font-size: 12px; /* Adjust icon size */
+    }
+  }

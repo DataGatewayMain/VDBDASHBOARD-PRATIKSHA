@@ -1,0 +1,173 @@
+<mat-sidenav-container class="sidenav-container">
+  <!-- Sidebar (Sidenav) -->
+  <mat-sidenav #sidenav mode="side" [(opened)]="isSidebarOpened" class="sidenav">
+    <mat-toolbar>User Management</mat-toolbar>
+    <mat-nav-list>
+
+      <!-- Dashboard -->
+      <a mat-list-item routerLink="/dashboard"><button mat-button matRipple>
+        <fa-icon [icon]="faTachometerAlt"></fa-icon> Dashboard
+      </button>
+      </a>
+
+      <!-- Users Menu with Submenu -->
+      <mat-list-item>
+        <button mat-button (click)="toggleUserSubMenu()" matRipple>
+          <fa-icon [icon]="faUsers" *ngIf="isUserSubMenuOpen"></fa-icon> 
+          <fa-icon [icon]="faUsers" *ngIf="!isUserSubMenuOpen"></fa-icon>
+           Users
+          <!-- <mat-icon *ngIf="isUserSubMenuOpen">expand_less</mat-icon>
+          <mat-icon *ngIf="!isUserSubMenuOpen">expand_more</mat-icon> -->
+        </button>
+      </mat-list-item>
+      <!-- Submenu for Users -->
+      <div *ngIf="isUserSubMenuOpen" class="submenu mx-3">
+        <a mat-list-item routerLink="/users" >User Activity</a>
+        <!-- <a mat-list-item routerLink="" ></a> -->
+        <a mat-list-item routerLink="/inviteuser" >Invite Users</a>
+      </div>
+      
+
+
+      <!-- subscriptions -->
+      <mat-list-item>
+        <button mat-button (click)="togglesubscriptionSubMenu()" matRipple>
+          <fa-icon [icon]="faReceipt" *ngIf="isSubscriptionSubMenuOpen"></fa-icon>
+          <fa-icon [icon]="faReceipt" *ngIf="!isSubscriptionSubMenuOpen"></fa-icon>
+          Subscriptions
+        </button>
+      </mat-list-item>
+      <!-- Submenu for Users -->
+      <div *ngIf="isSubscriptionSubMenuOpen" class="submenu mx-3">
+        <a mat-list-item routerLink="/subscriptions">User Subscriptions</a>
+      </div>
+
+
+      <!-- analytics -->
+      <a mat-list-item routerLink="/analytics"><button mat-button  matRipple>
+        <fa-icon [icon]="faChartLine"></fa-icon> Analytics
+      </button></a>
+
+
+      <!-- Settings -->
+      <a mat-list-item routerLink="/settings"><button mat-button  matRipple>
+        <fa-icon [icon]="faCogs"></fa-icon> Settings
+      </button></a>
+
+
+      <!--  Support -->
+      <mat-list-item>
+        <button mat-button (click)="toggleSupport()" matRipple>
+          <fa-icon [icon]="faFolder" *ngIf="isSupport"></fa-icon> 
+          <fa-icon [icon]="faFolder" *ngIf="!isSupport"></fa-icon>
+          Support
+        
+        </button>
+      </mat-list-item>
+      <div *ngIf="isSupport" class="submenu mx-3">
+        <a mat-list-item routerLink="/support" >View Tickets</a>
+        
+        <a mat-list-item routerLink="/tickitststus" >View Status</a>
+
+        <a mat-list-item routerLink="/meetings" >View Meetings</a>
+      </div>
+
+      <!-- <a mat-list-item routerLink="/support"><button mat-button  matRipple>
+        <fa-icon [icon]="faHeadset"></fa-icon> Support
+      </button></a> -->
+
+     
+       <!--  Audit Logs -->
+      <a mat-list-item routerLink="/logs"><button mat-button  matRipple>
+        <fa-icon [icon]="faFileAlt"></fa-icon>  Audit Logs
+      </button></a>
+
+      
+         <!--  Feature Management -->
+         <a mat-list-item routerLink="/feature"><button mat-button  matRipple>
+          <fa-icon [icon]="faWrench"></fa-icon>  Feature Management
+        </button></a>
+
+        <!-- Content Management -->
+        <!-- <a mat-list-item routerLink="/content"><button mat-button  matRipple>
+          <fa-icon [icon]="faFolder"></fa-icon> Content Management
+          
+        </button></a> -->
+
+        <mat-list-item>
+          <button mat-button (click)="toggleContent()" matRipple>
+            <fa-icon [icon]="faFolder" *ngIf="isContentOpen"></fa-icon> 
+            <fa-icon [icon]="faFolder" *ngIf="!isContentOpen"></fa-icon>
+            Content Management
+          
+          </button>
+        </mat-list-item>
+
+        <!-- Submenu for Users -->
+        <div *ngIf="isContentOpen" class="submenu mx-3">
+          <a mat-list-item routerLink="/uploadfiles" >Upload Files</a>
+          <!-- <a mat-list-item routerLink="" ></a> -->
+          <a mat-list-item routerLink="" >Upload History</a>
+        </div>
+
+      <!-- Notifications -->
+      <a mat-list-item routerLink="/notifications"><button mat-button  matRipple>
+        <fa-icon [icon]="faBell"></fa-icon> Notifications
+      </button></a>
+      
+        <!-- Notifications -->
+        <a mat-list-item routerLink="/system"><button mat-button  matRipple>
+          <fa-icon [icon]="faHeartbeat"></fa-icon> System Health
+        </button></a>
+   
+     
+      <a mat-list-item routerLink="/feedbacks"><button mat-button matRipple>
+        <fa-icon [icon]="faCommentAlt"></fa-icon> Feedback
+      </button> </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <!-- Main Content -->
+  <mat-sidenav-content >
+    <!-- Top Navbar with Toggle Button -->
+    <mat-toolbar class="d-flex justify-content-between align-items-center sticky-top">
+    <div class="d-flex  align-items-center">
+      <button mat-icon-button (click)="toggleSidebar()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>VectorDB Admin Dashboard</span>
+
+    </div>
+    <div>
+      <div class="nav-icons">
+        <fa-icon 
+          [icon]="faBell" 
+          class="notification-icon mx-3" 
+          (click)="toggleNotifications()">
+        </fa-icon> <!-- Notification -->
+        
+        <fa-icon 
+          [icon]="faUser" 
+          class="profile-icon" 
+          (click)="toggleProfile()">
+        </fa-icon> <!-- Profile -->
+      </div>
+    
+      <div *ngIf="showNotifications" class="notification-bar" style="color: black;">
+        <p>Notifications <span class="badge">{{ notificationCount }}</span></p>
+      
+      </div>
+    
+      <div *ngIf="showProfile" class="profile-bar">
+        <p>User Profile</p>
+        <!-- Include user profile details here -->
+      </div>
+    </div>
+    
+    </mat-toolbar>
+  
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

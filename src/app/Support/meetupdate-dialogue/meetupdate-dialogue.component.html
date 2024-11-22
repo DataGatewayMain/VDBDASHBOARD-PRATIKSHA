@@ -1,0 +1,162 @@
+<div class="dialog-header px-5 py-3">
+    <h2>Ticket Details</h2>
+    <button mat-icon-button (click)="close()" class="close-button">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  
+  <div class="view">
+    <div class="container p-5 ticket-container">
+      <div class="row">
+        <div class="col-md-12 ticket-details">
+          
+         <div class="first my-2">
+         <div class="row">
+          <div class="col-md-6">
+              <!-- Ticket ID -->
+           <div class="field">
+            <mat-icon>confirmation_number</mat-icon>
+            Ticket ID <strong class="mx-2">{{ data.ticketId }}</strong> 
+          </div>
+          
+        
+          </div>
+          <div class="col-md-6">
+              <!-- User ID -->
+          <!-- <div class="field">
+            <mat-icon>person</mat-icon>
+            UserName<strong class="mx-2">{{ data.firstName }}</strong> 
+          </div> -->
+          </div>
+         </div>
+         </div>
+          
+     <!-- <div class="second my-2">
+          <div class="row">
+            <div class="col-md-6">
+            
+            <div class="field">
+              <mat-icon>title</mat-icon>
+              Title <strong class="mx-2">{{ data.title }}</strong> 
+            </div>
+            </div>
+            <div class="col-md-6">
+              
+                  <div class="field">
+                   <mat-icon>schedule</mat-icon>
+                   Created<strong class="mx-2">{{ data.createdAt | date: 'short' }}</strong> 
+                  </div>
+            </div>
+          </div>
+      </div> -->
+          
+          <!-- Description -->
+          <!-- <div class="field my-2">
+            <mat-icon>description</mat-icon>
+            Description<strong class="mx-2">{{ data.description }}</strong> 
+          </div>
+  
+          <div class="iconssection d-flex justify-content-center align-items-center mt-4">
+            <div class="icons">
+              <h6>Choose One Of The Following</h6>
+              
+            <div class="icons2 d-flex justify-content-center align-items-center">
+                        
+              <a class="btn" (click)="openChatboxDialog()">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#080808" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-wechat">
+                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                         <path d="M16.5 10c3.038 0 5.5 2.015 5.5 4.5c0 1.397 -.778 2.645 -2 3.47l0 2.03l-1.964 -1.178a6.649 6.649 0 0 1 -1.536 .178c-3.038 0 -5.5 -2.015 -5.5 -4.5s2.462 -4.5 5.5 -4.5z" />
+                         <path d="M11.197 15.698c-.69 .196 -1.43 .302 -2.197 .302a8.008 8.008 0 0 1 -2.612 -.432l-2.388 1.432v-2.801c-1.237 -1.082 -2 -2.564 -2 -4.199c0 -3.314 3.134 -6 7 -6c3.782 0 6.863 2.57 7 5.785l0 .233" />
+                          <path d="M10 8h.01" />
+      <path d="M7 8h.01" />
+      <path d="M15 14h.01" />
+      <path d="M18 14h.01" />
+                      </svg>
+              </a>
+              
+              <a class="btn" (click)="openSchedulePopup()"> 
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#080808" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-video-plus">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                  <path d="M15 10l4.553 -2.276a1 1 0 0 1 1.447 .894v6.764a1 1 0 0 1 -1.447 .894l-4.553 -2.276v-4z" />
+                  <path d="M3 6m0 2a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2z" />
+                  <path d="M7 12l4 0" />
+                  <path d="M9 10l0 4" />
+                </svg>
+              </a>
+            </div>
+              
+            </div>
+          </div> -->
+           
+  
+          <!-- Response Input -->
+          <div class="field mt-4">
+            <mat-icon>reply</mat-icon>
+            <label class="mx-2"> Response </label>
+            <input [(ngModel)]="responseText" class="form-control response-input" placeholder="Enter your response" />
+          </div>
+  
+          <!-- Status Dropdown -->
+          <div class="field mt-3">
+            <mat-icon>flag</mat-icon>
+            <label class="mx-2"> Status</label>
+            <select [(ngModel)]="status" class="form-control status-dropdown">
+              <option value="select" selected>Select status</option>
+              <option value="closed">Closed</option>
+              <option value="pending">Pending</option>
+            </select>
+          </div>
+  
+          <!-- Submit Button -->
+          <div class="text-center mt-4">
+            <button (click)="submitResponse()" class="btn btn-primary submit-button">Submit Response</button>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <!-- Schedule Meeting Modal -->
+  <!-- <div *ngIf="isModalOpen" class="modal">
+    <div class="modal-content">
+      <h2>Schedule Meeting</h2>
+      <form (submit)="scheduleMeeting()">
+        <div class="row d-flex justify-content-center">
+          <div class="cols">
+            <label for="ticketId">Ticket ID:</label>
+            <input type="text" [(ngModel)]="meetingDetails.ticketId" name="ticketId" class="readonly-input mx-2" required readonly>
+          </div>
+          <div class="cols">
+            <label for="firstName">User Name:</label>
+            <input type="text" [(ngModel)]="meetingDetails.firstName" name="firstName" class="readonly-input mx-2" required readonly>
+          </div>
+        </div>
+  
+        <label for="startTime">Start Time:</label>
+        <input type="datetime-local" [(ngModel)]="meetingDetails.startTime" name="startTime" required>
+  
+        <label for="duration">Duration (minutes):</label>
+        <input type="number" [(ngModel)]="meetingDetails.duration" name="duration" required>
+  
+        <div class="button-group">
+          <button type="submit">Submit</button>
+          <button type="button" (click)="closeModal()">Close</button>
+        </div>
+      </form>
+    </div>
+  </div> -->
+  
+  
+  
+  <!-- Response Modal -->
+  <!-- <div *ngIf="isResponseModalOpen" class="modal">
+    <div class="modal-content">
+      <h2>Meeting successfully scheduled! Open the Zoom app at the scheduled time to attend, or copy the link below, log in with host credentials, and start the meeting.</h2>
+      <p>{{ apiResponseMessage }}</p>
+      <button (click)="copyToClipboard(apiResponseMessage)">Copy Link</button>
+      <button (click)="closeResponseModal()">Close</button>
+    </div>
+  </div> -->
+  

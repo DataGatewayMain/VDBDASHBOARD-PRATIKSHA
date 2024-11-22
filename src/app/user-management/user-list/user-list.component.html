@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="row">
+      <div class="col-md-12">
+          <div class="header">
+              <div class="three p-4">
+                  <h1>User List <hr style="color: rgb(0, 0, 0); width: 100px; height: 2px"></h1>
+                </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="container p-3">
+  
+  <div class="search-box">
+    <input type="text" placeholder="Search User here....." [(ngModel)]="searchText">
+    <a href="/permissions" class="btn add-task-btn" >+ Manage Users</a>
+  </div>
+  
+  <div class="table-responsive">
+    <table class="table table-bordered task-table mb-3">
+      <thead>
+        <tr>
+          <!-- <th><input type="checkbox"></th> -->
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <!-- <th>Company Name</th> -->
+          <th>Credit</th>
+          <th>Last Login</th>
+          <th>Location</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of filteredUsers() " class="table-responsive">
+          <!-- <td><input type="checkbox"></td> -->
+          <td>{{ user.id }}</td>
+          <td>{{ user.firstName }} {{ user.lastName }}</td>
+          <td>{{ user.email }}</td>
+          <!-- <td>{{ user.companyName }}</td> -->
+          <td>{{ user.credit }}</td>
+          <td>{{ user.lastLogin | date:'short' }}</td>
+          <td>{{ user.city }}, {{ user.state }}</td>
+          <td>
+            <span [ngClass]="{'green-dot': user.status === 'Active', 'red-dot': user.status === 'Inactive'}"></span>
+            {{user.status}}
+          </td>
+          <td class="action-icons">
+            <a class="btn" (click)="link(user.apiKey)">
+              <fa-icon [icon]="['fas', 'eye']"></fa-icon> View
+            </a>
+            <!-- <fa-icon [icon]="['fas', 'pencil']"></fa-icon>
+            <fa-icon [icon]="['fas', 'trash']"></fa-icon> -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+</div>
+
+
+
+

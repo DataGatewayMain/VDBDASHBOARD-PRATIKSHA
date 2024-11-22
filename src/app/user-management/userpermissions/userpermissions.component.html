@@ -1,0 +1,41 @@
+<h2>User Permissions</h2>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Email</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Company Name</th>
+      <th>Credit</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="users.length > 0; else noUsers">
+    <tr *ngFor="let user of users">
+      <td>{{ user.id }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.firstName }}</td>
+      <td>{{ user.lastName }}</td>
+      <td>{{ user.companyName }}</td>
+      <td>{{ user.credit }}</td>
+      <td>{{ user.status }}</td>
+      <td>
+        <div class="switcher">
+            <input type="checkbox" id="switch-checkbox-example-4">
+        
+            <label for="switch-checkbox-example-4">
+                <span class="switch"><a><i></i></a></span>
+            </label>
+        </div>
+        
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #noUsers>
+  <p>No users available.</p>
+</ng-template>

@@ -1,0 +1,63 @@
+
+<div class="container">
+  <div class="row">      
+          <div class="col-md-12 ">
+              <div class="header">
+                  <div class="three p-4">
+                      <h2>Analytics <hr style="color: rgb(0, 0, 0); width: 100px; height: 2px"></h2>
+                  </div>
+              </div>
+          </div>
+      
+    <div class="col-md-12  graph">
+      <div  style="display: block; height: 400px; ">
+        <canvas id="activeUsersChart" class="card"></canvas>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container">
+ <div class="row">
+  <div class="col-md-12 p-5">
+    <div class="card">
+      <div class="card-header">
+          <h3>Views by Page title </h3>  
+      </div>
+      <table>
+          <thead>
+              <tr>
+                  <th class="text-center">Page Title and Screen Class</th>
+                  <th class="text-center">Views</th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr  *ngFor="let activity of paginatedActivities">
+                <td class="text-center">{{ activity.pageUrl }}</td>
+                <td class="text-center">{{ activity.visitCount }}</td>
+              </tr>
+          </tbody>
+      </table>
+      
+      <!-- Pagination Controls -->
+
+      <div class="footer">
+        <div>
+            <button class="but" (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+            <span>{{ currentPage }}</span>
+            <button class="but" (click)="changePage(currentPage + 1)" [disabled]="currentPage * pageSize >= activities.length">Next</button>
+          </div>
+      </div>
+  </div>
+  </div>
+ </div>
+</div>
+
+<div style="display: block;">
+  <canvas #lineChart></canvas>
+</div>
+
+
+
+

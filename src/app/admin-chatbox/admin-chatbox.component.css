@@ -1,0 +1,134 @@
+/* chatbox.component.css */
+/* .chatbox {
+  width: 300px;
+  height: 400px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-header {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.message {
+  margin-bottom: 10px;
+}
+
+.chat-input {
+  display: flex;
+  padding: 10px;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 5px;
+}
+
+.chat-input button {
+  padding: 5px 10px;
+} */
+
+
+.chatbox-container {
+  width: 400px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.chatbox-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: #0076d77a;
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.chatbox-messages {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.chatbox-messages .message {
+  max-width: 70%;
+  padding: 10px;
+  border-radius: 10px;
+  word-wrap: break-word;
+  font-size: 14px;
+}
+
+.chatbox-messages .user-message {
+  align-self: flex-start;
+  background-color: #e1f5fe;
+  color: #0078d7;
+  border: 1px solid #0078d7;
+}
+
+.chatbox-messages .admin-message {
+  align-self: flex-end;
+  background-color: #0078d7;
+  color: white;
+  border: 1px solid #005bb5;
+}
+
+.chatbox-input {
+  display: flex;
+  padding: 10px;
+  background-color: white;
+  border-top: 1px solid #ddd;
+}
+
+.chatbox-input input {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.chatbox-input button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #0078d7;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.chatbox-input button:hover {
+  background-color: #005bb5;
+}
+
+.timestamp {
+  font-size: 10px;
+  color: gray;
+  margin-top: 5px;
+  display: block;
+}
+

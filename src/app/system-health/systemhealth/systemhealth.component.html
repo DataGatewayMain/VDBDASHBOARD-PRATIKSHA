@@ -1,0 +1,59 @@
+<div class="system-health-container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="header">
+        <div class="three p-4 d-flex justify-content-start">
+          <h2>System Health <hr style="color: rgb(0, 0, 0); width: 100px; height: 2px"></h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+ <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+         
+<!-- system-health.component.html -->
+<div class="health-check">
+    
+    <ng-container *ngIf="healthStatus; else loading">
+      <div class="cards-container">
+        <div class="card" *ngFor="let service of healthStatus | keyvalue">
+          <div class="card-header">
+            <h3>{{ service.key }}</h3>
+          </div>
+          <div class="card-body">
+            <p>Status: <span [ngClass]="{ 'up': service.value === 'UP', 'down': service.value === 'DOWN' }">{{ service.value }}</span></p>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #loading>
+      <div class="loading">Loading...</div>
+    </ng-template>
+  </div>
+
+
+  <div class="health-check">
+    <ng-container *ngIf="systemStatus">
+      <div class="cards-container">
+        <div class="card" >
+          <div class="card-header">
+            <h3>Admin Dashboard Service</h3>
+          </div>
+          <div class="card-body">
+            <p>Status: <span [ngClass]="{ 'up': systemStatus === 'UP', 'down': systemStatus === 'DOWN' }">{{ systemStatus }}</span></p>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+ 
+  </div>
+        </div>
+    </div>
+ </div>
+  </div>
+
+
+
+
